@@ -1,12 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createLogger } from 'redux-logger';
+import { createStore,applyMiddleware,combineReducers } from 'redux';
+import thunkMiddleware from 'redux-thunk';
 import './index.css';
-import App from './App';
+// import Card from './Card';
+import App from './containers/App';
+// import CardList from './CardList';
+// parent of card
 import * as serviceWorker from './serviceWorker';
+import 'tachyons';
+import { searchRobots,requestRobots } from './reducers';
+ 
+// destructuring robots as it is not default export
+
+
+const logger = createLogger();
+
+const rootReducer= combineReducers({searchRobots, requestRobots})
+
+// const store= createStore(rootReducer)
+const store= createStore( rootReducer,applyMiddleware(thunkMiddleware, logger ))
+
+
+
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+  <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
