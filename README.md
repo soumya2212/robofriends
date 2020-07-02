@@ -1,3 +1,8 @@
+Note: Before running the app, first you need to install 'node_modules' and can be done by using "npm install" (in the terminal).
+      Now Robofriends is ready to run with "npm start".
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
